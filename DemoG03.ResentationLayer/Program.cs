@@ -1,3 +1,8 @@
+using DemoG03.BusinessLogic.Services;
+using DemoG03.DataAccess.Data.Contexts;
+using DemoG03.DataAccess.Repositories;
+using Microsoft.EntityFrameworkCore;
+
 namespace DemoG03.ResentationLayer
 {
     public class Program
@@ -8,7 +13,20 @@ namespace DemoG03.ResentationLayer
 
             #region Add services to the container
             // Add services to the container.
-            builder.Services.AddControllersWithViews(); 
+            builder.Services.AddControllersWithViews();
+            //builder.Services.AddScoped<ApplicationDBContext>();
+
+            builder.Services.AddDbContext<ApplicationDBContext>(options =>
+            {
+                //options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"]);
+               // options.UserSqlServer(builder.Configuration.GetSection("ConnectionStrings")["DefaultConnectio"]);
+               options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+
+
+            });
+
+            builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            builder.Services.AddScoped<IDepartmentServices,DepartmentServices>();
             #endregion
 
             var app = builder.Build();
