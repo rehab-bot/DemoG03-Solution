@@ -4,15 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DemoG03.BusinessLogic.DTOs
+namespace DemoG03.DataAccess.Models.Departments
 {
-   public class DepartmentDTO
+   public class Department:BaseEntity
     {
-        public int Id { get; set; }
         public string Name { get; set; } = null!;
         public string Code { get; set; } = null!;
-        public string Description { get; set; } = string.Empty;
-         public DateOnly DateOfCreation { get; set; }
-
+        public string Description { get; set; } =string.Empty!;
     }
 }

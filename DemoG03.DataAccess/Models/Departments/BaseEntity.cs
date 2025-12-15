@@ -5,7 +5,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DemoG03.DataAccess.Models
+namespace DemoG03.DataAccess.Models.Departments
 {
     public class BaseEntity
     { 

@@ -1,7 +1,8 @@
-﻿using DemoG03.BusinessLogic.DTOs;
+﻿using DemoG03.BusinessLogic.DTOs.Departments;
 using DemoG03.BusinessLogic.Factories;
+using DemoG03.BusinessLogic.Services.interfaces;
 using DemoG03.DataAccess.Models;
-using DemoG03.DataAccess.Repositories;
+using DemoG03.DataAccess.Repositories.Departments;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -10,7 +11,7 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DemoG03.BusinessLogic.Services
+namespace DemoG03.BusinessLogic.Services.classes
 {
     public class DepartmentServices : IDepartmentServices
     {
