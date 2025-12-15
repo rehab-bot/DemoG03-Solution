@@ -1,9 +1,10 @@
-using DemoG03.BusinessLogic.Services;
+using DemoG03.BusinessLogic.Services.classes;
+using DemoG03.BusinessLogic.Services.interfaces;
 using DemoG03.DataAccess.Data.Contexts;
-using DemoG03.DataAccess.Repositories;
+using DemoG03.DataAccess.Repositories.Departments;
 using Microsoft.EntityFrameworkCore;
 
-namespace DemoG03.ResentationLayer
+namespace DemoG03.ReesentationLayer
 {
     public class Program
     {
@@ -17,9 +18,9 @@ namespace DemoG03.ResentationLayer
             //builder.Services.AddScoped<ApplicationDBContext>();
 
             builder.Services.AddDbContext<ApplicationDBContext>(options =>
-            {
+             {
                 //options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"]);
-               // options.UserSqlServer(builder.Configuration.GetSection("ConnectionStrings")["DefaultConnectio"]);
+               // options.UserSqlServer(builder.Configuration.GetSection("ConnectionStrings")["DefaultConnection"]);
                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 
 
@@ -30,6 +31,7 @@ namespace DemoG03.ResentationLayer
             #endregion
 
             var app = builder.Build();
+            #region Configure the HTTP request pipeline.
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -44,11 +46,12 @@ namespace DemoG03.ResentationLayer
 
             app.UseRouting();
 
-       
+
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=Index}/{id?}"); 
+            #endregion
 
             app.Run();
         }

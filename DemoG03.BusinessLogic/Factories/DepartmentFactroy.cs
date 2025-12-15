@@ -1,5 +1,5 @@
-﻿using DemoG03.BusinessLogic.DTOs;
-using DemoG03.DataAccess.Models;
+﻿using DemoG03.BusinessLogic.DTOs.Departments;
+using DemoG03.DataAccess.Models.Departments;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,5 +1,6 @@
 ﻿using DemoG03.DataAccess.Data.Configrations;
-using DemoG03.DataAccess.Models;
+using DemoG03.DataAccess.Models.Departments;
+using DemoG03.DataAccess.Models.Employees;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace DemoG03.DataAccess.Data.Contexts
         {
         }
         public DbSet<Department> Departments { get; set; } = null!;
+        public DbSet<Employee> Employees { get; set; } = null!;
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
         //   optionsBuilder.UseSqlServer("ConnectionString");
