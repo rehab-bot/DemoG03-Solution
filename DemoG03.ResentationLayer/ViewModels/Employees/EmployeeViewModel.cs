@@ -1,15 +1,10 @@
 ﻿using DemoG03.DataAccess.Models.Employees;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DemoG03.BusinessLogic.DTOs.Employees
+namespace DemoG03.ResentationLayer.ViewModels.Employees
 {
-    public class UpdatedEmployeeDTO
-    { public int Id { get; set; }
+    public class EmployeeViewModel
+    {
         [Required]
         [MaxLength(50, ErrorMessage = "Name should be less than 50 char")]
         [MinLength(3, ErrorMessage = "Name should be at least 3 char")]
@@ -30,10 +25,11 @@ namespace DemoG03.BusinessLogic.DTOs.Employees
         [Display(Name = "Phone Number")]
         public string? PhoneNumber { get; set; }
         public Gender Gender { get; set; }
-        public EmployeeType EmployeeType { get; set; }
-        public DateOnly HiringDate { get; set; }
+        [Display(Name = "DepartmentId")]
         public int? DepartmentId { get; set; }
+        public EmployeeType EmployeeType { get; set; }
 
+        public DateOnly HiringDate { get; set; }
 
     }
 }
