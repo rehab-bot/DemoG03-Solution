@@ -3,6 +3,7 @@ using DemoG03.DataAccess.Models.Employees;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,9 +13,13 @@ namespace DemoG03.DataAccess.Repositories.Generics
     {
         int Add(TEntity entity);
         IEnumerable<TEntity> GetAll(bool WithTracking = false);
-        int Delete(TEntity entity);
+        IEnumerable<TResult> GetAll<TResult>(Expression<Func<TEntity, TResult>>selector);  
         TEntity? GetById(int id);
+        int Delete(TEntity entity);
         int Update(TEntity entity);
+      
+
+
     }
 }
 

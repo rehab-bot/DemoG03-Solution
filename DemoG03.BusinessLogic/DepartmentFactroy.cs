@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DemoG03.BusinessLogic.Factories
+namespace DemoG03.BusinessLogic
 {
     internal static class DepartmentFactroy
     { public static DepartmentDetailsDTO ToDepartmentDetailsDTO(this Department department)

@@ -13,7 +13,8 @@ namespace DemoG03.BusinessLogic.DTOs.Employees
         public int? Age { get; set; }
         public decimal Salary { get; set; }
         public bool IsActive { get; set; }
-         public string? Email { get; set; }
+       public string Address { get; set; } = null!;
+        public string? Email { get; set; }
         public string? PhoneNumber { get; set; }
         public DateOnly HiringDate { get; set; }
         public string Gender { get; set; } = null!;
