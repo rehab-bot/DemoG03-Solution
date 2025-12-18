@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DemoG03.BusinessLogic.DTOs.Employees
 {
-    internal class UpdatedEmployeeDTO
+    public class UpdatedEmployeeDTO
     { public int Id { get; set; }
         [Required]
         [MaxLength(50, ErrorMessage = "Name should be less than 50 char")]
@@ -31,6 +31,7 @@ namespace DemoG03.BusinessLogic.DTOs.Employees
         public string? PhoneNumber { get; set; }
         public Gender Gender { get; set; }
         public EmployeeType EmployeeType { get; set; }
+        public DateOnly HiringDate { get; set; }
 
 
     }

@@ -15,8 +15,8 @@ namespace DemoG03.BusinessLogic.DTOs.Employees
         public decimal Salary { get; set; }
         public bool IsActive { get; set; }
         public string? Email { get; set; }
-        public Gender Gender { get; set; } 
-        public EmployeeType EmployeeType { get; set; }
+        public string EmpGender { get; set; } =string.Empty;
+        public string EmpEmployeeType { get; set; } = string.Empty;
 
 
 

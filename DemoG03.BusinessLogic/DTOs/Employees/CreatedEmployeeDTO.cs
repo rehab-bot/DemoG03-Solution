@@ -30,7 +30,8 @@ namespace DemoG03.BusinessLogic.DTOs.Employees
         [Display(Name ="Phone Number")]
         public string? PhoneNumber { get; set; }
         public Gender Gender { get; set; } 
-        public EmployeeType EmployeeType { get; set; }  
+        public EmployeeType EmployeeType { get; set; }
+        public DateOnly HiringDate { get; set; }
 
     }
 }

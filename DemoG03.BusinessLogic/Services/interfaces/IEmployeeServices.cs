@@ -14,5 +14,6 @@ namespace DemoG03.BusinessLogic.Services.interfaces
         int CreateEmployee(CreatedEmployeeDTO employeeDTO);
       
         bool DeleteEmployee(int id);
+       int UpdateEmployee(UpdatedEmployeeDTO employeeDTO);
     }
 }

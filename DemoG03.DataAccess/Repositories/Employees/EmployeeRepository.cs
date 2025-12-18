@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DemoG03.DataAccess.Repositories.Employees
 {
-    internal class EmployeeRepository :GenericRepository<Employee>, IEmployeeRepository
+    public class EmployeeRepository :GenericRepository<Employee>, IEmployeeRepository
     {
         private readonly ApplicationDBContext _DbContext;
         
