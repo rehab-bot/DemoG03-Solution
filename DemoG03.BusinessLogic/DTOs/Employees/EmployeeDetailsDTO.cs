@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,9 @@ namespace DemoG03.BusinessLogic.DTOs.Employees
         public DateTime? CreatedOn { get; set; }
         public int LastModifiedBy { get; set; }
         public DateTime LastModifiedOn { get; set; }
+        public int? DepartmentId { get; set; }
+        [Display(Name = "DepartmentName")]  
+        public string? DepartmentName { get; set; }
     }  
 
-}
+}    

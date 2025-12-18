@@ -21,6 +21,8 @@ namespace DemoG03.ResentationLayer.Controllers
         }
         public IActionResult Index()
         {
+            ViewData["Message"] = new DepartmentDTO() { Name = "Hello from ViewData" };
+            ViewBag.Message = new DepartmentDTO() {Name ="Hello from ViewBag"};
             var departments = _departmentServices.GetAllDepartments(); 
             return View(departments);
         }
@@ -31,26 +33,37 @@ namespace DemoG03.ResentationLayer.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(CreatedDepartmentDTO departmentDTO)
+        public IActionResult Create(DepartmentViewModel departmentVM)
         { 
             if(!ModelState.IsValid)
             {
-                return View(departmentDTO);
+                return View(departmentVM);
 
             }
             var message =string.Empty;
             try
-            {
+            { var departmentDTO = new CreatedDepartmentDTO()
+                {
+                    Name = departmentVM.Name,
+                    Description = departmentVM.Description,
+                    Code = departmentVM.Code,
+                    DateOfCreation = departmentVM.DateOfCreation,
+                };
                 var result = _departmentServices.AddDepartment(departmentDTO);
                 if (result > 0)
-                    return RedirectToAction(nameof(Index));   
+                  
+                    message = "Department Created successfuilly";
+
+                
                 //View("Index",_departmentServices.GetAllDepartments());
                 else
                 {
-                    message = "Department cannot be created ";
+                        message = "Department cannot be created now ,try again later:(";
+
                     ModelState.AddModelError(string.Empty, message);
-                    return View(departmentDTO);
+                    return View(departmentVM);
                 }
+                    return RedirectToAction(nameof(Index));   
             }
             catch (Exception ex) 
             { 
@@ -58,7 +71,7 @@ namespace DemoG03.ResentationLayer.Controllers
                 if (_env.IsDevelopment())
                 {
                     message = ex.Message;
-                    return View(departmentDTO);
+                    return View(departmentVM);
                 }
                 else
                 {

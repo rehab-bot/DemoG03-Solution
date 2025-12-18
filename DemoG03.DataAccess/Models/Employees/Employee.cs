@@ -20,6 +20,8 @@ namespace DemoG03.DataAccess.Models.Employees
         public EmployeeType EmployeeType { get; set; }
 
          public bool IsActive { get; set; }
+        public int? DepartmentId { get; set; }
+        public virtual Department? Department { get; set; }
 
     }
 }

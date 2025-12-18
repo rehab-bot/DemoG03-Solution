@@ -14,8 +14,4 @@
     <ProjectReference Include="..\DemoG03.DataAccess\DemoG03.DataAccess.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Factories\" />
-  </ItemGroup>
-
 </Project>
