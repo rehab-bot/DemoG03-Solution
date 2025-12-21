@@ -51,6 +51,7 @@ namespace DemoG03.ResentationLayer.Controllers
                         IsActive = employeeVM.IsActive,
                         Email = employeeVM.Email,
                         PhoneNumber = employeeVM.PhoneNumber,
+                        Image = employeeVM.Image,
                     };
                     var result = _employeeServices.CreateEmployee(employeeDTO);
                     if (result > 0)

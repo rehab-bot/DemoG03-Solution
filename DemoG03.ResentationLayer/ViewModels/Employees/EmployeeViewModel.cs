@@ -30,6 +30,7 @@ namespace DemoG03.ResentationLayer.ViewModels.Employees
         public EmployeeType EmployeeType { get; set; }
 
         public DateOnly HiringDate { get; set; }
+        public IFormFile? Image { get; set; }
 
     }
 }

@@ -21,8 +21,8 @@ namespace DemoG03.BusinessLogic.Profiles
             CreateMap<Employee, EmployeeDetailsDTO>()
                 .ForMember(dist => dist.Gender, options => options.MapFrom(src => src.Gender))
                 .ForMember(dist => dist.EmployeeType, options => options.MapFrom(src => src.EmployeeType))
-                .ForMember(dist => dist.HiringDate, options => options.MapFrom(src => DateOnly.FromDateTime(src.HiringDate)));
-
+                .ForMember(dist => dist.HiringDate, options => options.MapFrom(src => DateOnly.FromDateTime(src.HiringDate)))
+                .ForMember(dist => dist.Image,options => options.MapFrom(src => src.ImageName )); 
             CreateMap<CreatedEmployeeDTO, Employee>()
                 .ForMember(dist => dist.HiringDate, options => options.MapFrom(src => src.HiringDate.ToDateTime(new TimeOnly())));
           

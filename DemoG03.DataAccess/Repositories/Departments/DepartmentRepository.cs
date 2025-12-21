@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DemoG03.DataAccess.Repositories.Departments
 {
-    public class DepartmentRepository :GenericRepository<Department>, IDepartmentRepository
+    public class DepartmentRepository :GenericRepository<Department>,IDepartmentRepository
     {
         private readonly ApplicationDBContext _DbContext;
         public DepartmentRepository(ApplicationDBContext dbContext):base(dbContext )

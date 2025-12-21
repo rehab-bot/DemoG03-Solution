@@ -39,20 +39,20 @@ namespace DemoG03.DataAccess.Repositories.Generics
             var entity = _DbContext.Set<TEntity>().Find(id);
             return entity;
         }
-        public int Add(TEntity entity)
+        public void Add(TEntity entity)
         {
             _DbContext.Set<TEntity>().Add(entity);
-            return _DbContext.SaveChanges();
+           
         }
-        public int Update(TEntity entity)
+        public void Update(TEntity entity)
         {
             _DbContext.Update(entity);
-            return _DbContext.SaveChanges();
+           
         }
-        public int Delete(TEntity entity)
+        public void Delete(TEntity entity)
         {
             _DbContext.Set<TEntity>().Remove(entity);
-            return _DbContext.SaveChanges();
+            
         }
 
         public IEnumerable<TResult> GetAll<TResult>(Expression<Func<TEntity, TResult>> selector)
