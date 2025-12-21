@@ -4,6 +4,7 @@ using DemoG03.BusinessLogic.Services.interfaces;
 using DemoG03.DataAccess.Data.Contexts;
 using DemoG03.DataAccess.Repositories.Departments;
 using DemoG03.DataAccess.Repositories.Employees;
+using DemoG03.DataAccess.Repositories.UOW;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,19 +35,20 @@ namespace DemoG03.ReesentationLayer
 
 
 
-            builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<IDepartmentServices,DepartmentServices>();
             #endregion
 
             builder.Services.AddControllersWithViews(options =>
             options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
-            builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+           
             builder.Services.AddScoped<IDepartmentServices, DepartmentServices>();
             builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-           
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<IDepartmentServices, DepartmentServices>();
             builder.Services.AddScoped<IEmployeeServices, EmployeeServices>();
             builder.Services.AddAutoMapper(M => M.AddProfile(new MappingProfile()));
-
+            builder.Services.AddScoped<IAttachmentServices, AttachmentService>();
             var app = builder.Build();
             #region Configure the HTTP request pipeline.
 

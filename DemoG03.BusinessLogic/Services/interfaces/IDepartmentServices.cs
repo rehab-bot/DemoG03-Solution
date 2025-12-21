@@ -6,7 +6,7 @@ namespace DemoG03.BusinessLogic.Services.interfaces
     {
         int AddDepartment(CreatedDepartmentDTO departmentDto);
         bool DeleteDepartment(int id);
-        IEnumerable<DepartmentDTO> GetAllDepartments();
+       IEnumerable<DepartmentDTO> GetAllDepartments();
         DepartmentDetailsDTO? GetDepartmentById(int id);
         int UpdateDepartment(UpdatedDepartmentDTO departmentDto);
     }
