@@ -1,11 +1,13 @@
 ﻿using DemoG03.BusinessLogic.DTOs.Departments;
 using DemoG03.BusinessLogic.Services.interfaces;
 using DemoG03.ResentationLayer.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 
 namespace DemoG03.ResentationLayer.Controllers
 {
+    [Authorize]
     public class DepartmentsController : Controller
     {
         private readonly IDepartmentServices _departmentServices;

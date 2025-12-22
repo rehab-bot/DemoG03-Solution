@@ -2,10 +2,12 @@
 using DemoG03.BusinessLogic.Services.interfaces;
 using DemoG03.DataAccess.Models.Employees;
 using DemoG03.ResentationLayer.ViewModels.Employees;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DemoG03.ResentationLayer.Controllers
 {
+    [Authorize]
     public class EmployeesController : Controller
     {
         private readonly IEmployeeServices _employeeServices;

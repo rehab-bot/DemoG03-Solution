@@ -2,9 +2,11 @@ using DemoG03.BusinessLogic.Profiles;
 using DemoG03.BusinessLogic.Services.classes;
 using DemoG03.BusinessLogic.Services.interfaces;
 using DemoG03.DataAccess.Data.Contexts;
+using DemoG03.DataAccess.Models.IdentityModels;
 using DemoG03.DataAccess.Repositories.Departments;
 using DemoG03.DataAccess.Repositories.Employees;
 using DemoG03.DataAccess.Repositories.UOW;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -49,6 +51,20 @@ namespace DemoG03.ReesentationLayer
             builder.Services.AddScoped<IEmployeeServices, EmployeeServices>();
             builder.Services.AddAutoMapper(M => M.AddProfile(new MappingProfile()));
             builder.Services.AddScoped<IAttachmentServices, AttachmentService>();
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 6;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireDigit = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequiredUniqueChars = 3;
+                options.User.RequireUniqueEmail = true;
+                options.Lockout.AllowedForNewUsers = true;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 5;
+            }).AddEntityFrameworkStores<ApplicationDBContext>()
+            .AddDefaultTokenProviders();
             var app = builder.Build();
             #region Configure the HTTP request pipeline.
 
@@ -64,12 +80,13 @@ namespace DemoG03.ReesentationLayer
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
+            app.UseAuthorization();
 
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Account}/{action=Login}/{id?}");
             #endregion
 
             app.Run();
