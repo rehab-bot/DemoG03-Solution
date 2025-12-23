@@ -38,12 +38,12 @@ namespace DemoG03.ReesentationLayer
 
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-            builder.Services.AddScoped<IDepartmentServices,DepartmentServices>();
+            builder.Services.AddScoped<IDepartmentServices, DepartmentServices>();
             #endregion
 
             builder.Services.AddControllersWithViews(options =>
             options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
-           
+
             builder.Services.AddScoped<IDepartmentServices, DepartmentServices>();
             builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -65,6 +65,12 @@ namespace DemoG03.ReesentationLayer
                 options.Lockout.MaxFailedAccessAttempts = 5;
             }).AddEntityFrameworkStores<ApplicationDBContext>()
             .AddDefaultTokenProviders();
+             builder.Services.ConfigureApplicationCookie(options =>
+        { 
+             options.AccessDeniedPath = "/Account/AccessDenied";
+             options.LoginPath = "/Account/Login";
+            options.LogoutPath = "/Account/SignOut";
+        });
             var app = builder.Build();
             #region Configure the HTTP request pipeline.
 
