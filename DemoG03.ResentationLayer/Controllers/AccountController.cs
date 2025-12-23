@@ -1,6 +1,7 @@
 ﻿using DemoG03.DataAccess.Models.IdentityModels;
 using DemoG03.ResentationLayer.Utities;
 using DemoG03.ResentationLayer.ViewModels.AccountViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -113,7 +114,7 @@ namespace DemoG03.ResentationLayer.Controllers
             return View(loginViewModel);
         }
         #endregion
-
+        [Authorize]
         public IActionResult Logout()
         {
             _signInManager.SignOutAsync().GetAwaiter().GetResult();
@@ -158,6 +159,10 @@ namespace DemoG03.ResentationLayer.Controllers
             }
             
             return View(resetPasswordViewModel);
+        }
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
 
     } 
